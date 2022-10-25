@@ -1,50 +1,94 @@
 .flex {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 }
 
 .grid {
-    display: -ms-grid;
-    display: grid;
+	display: -ms-grid;
+	display: grid;
 }
 
 .flex-col {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	-webkit-flex-direction: column;
+	flex-direction: column;
 }
 
 .p-4 {
-    padding: 1rem;
+	padding: 1rem;
 }
 
 .p-8 {
-    padding: 2rem;
+	padding: 2rem;
 }
 
 .p-1 {
-    padding: 0.25rem;
+	padding: 0.25rem;
 }
 
 .pb-1 {
-    padding-bottom: 0.25rem;
+	padding-bottom: 0.25rem;
 }
 .mb-2 {
-    margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .mb-4 {
-    margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 
 .mt-4 {
-    margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .mt-2 {
-    margin-top: 0.5rem;
+	margin-top: 0.5rem;
+}
+
+.gradient-border {
+	position: relative;
+	border-radius: 0.5rem;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.gradient-border::before {
+	background: linear-gradient(
+		90deg,
+		#e2e2e2 0%,
+		#e2e2e2 25%,
+		var(--color-secondary) 50%,
+		var(--color-primary) 75%,
+		var(--color-secondary) 100%
+	);
+}
+
+.gradient-border::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 0.5rem;
+	padding: 2px;
+
+	background-size: 400% auto;
+	background-position: -50% 25%;
+	opacity: 1;
+	transition: ease-in 400ms;
+
+	mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+}
+
+.gradient-border:hover::before,
+.gradient-border:focus::before {
+	background-position: 0 0;
+	opacity: 0.5;
 }

@@ -1,11 +1,20 @@
 <template>
   <nav aria-label="Main">
-    <span>George Mushore</span>
+    <IconLogo />
 
-    <div :class="{ 'h-auto': isOpen === false }">
-      <ul :class="{ hidden: isOpen === false }">
-        <li v-for="link in links" :key="link">
-          <a href="#" tabindex="0">{{ link }}</a>
+    <div>
+      <ul ref="target" :class="{ hidden: isMobile === true && isOpen === false }">
+        <li>
+          <NuxtLink tabindex="0" to="/">Work</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink tabindex="0" to="/about">About</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink tabindex="0" to="/Contact">Contact</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink tabindex="0" to="/Blog">Blog</NuxtLink>
         </li>
       </ul>
     </div>
@@ -18,14 +27,25 @@
 <script lang="ts" setup>
 import { useMediaQuery, useToggle } from "@vueuse/core";
 const isMobile = useMediaQuery("(max-width: 640px)");
-const idText = "header-icon-logo";
-const [isOpen = true, toggleButton] = useToggle();
-const links = ["Home", "About", "Contact", "Blog", "Careers"];
+const target = ref(null)
+const [isOpen = ref(true), toggleButton] = useToggle();
+
+function closeMenu() {
+  isOpen.value = false
+}
+onClickOutside(target, () => {
+  isOpen.value = false
+})
+
+watch(isMobile, () => {
+  if (isMobile) { isOpen.value = false }
+})
 </script>
 <style lang="scss">
 .hidden {
   display: none;
 }
+
 nav {
   width: 100%;
   display: flex;
@@ -34,6 +54,7 @@ nav {
   padding: 1rem;
   background-color: var(--bg-element);
   position: relative;
+
   div {
     position: absolute;
 
@@ -56,14 +77,17 @@ nav {
     }
   }
 }
+
 @media (min-width: 640px) {
   nav {
     padding-inline: 16px;
+
     div {
       position: static;
       height: auto;
       width: auto;
       margin: 0;
+
       ul {
         margin: 0;
         padding: 0;

@@ -1,51 +1,90 @@
 *,
 :before,
 :after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
-}
-* {
-    --color-secondary: #2d314d;
-    --color-primary: #c87030;
-    --color-neutral: #9597a5;
-    --color-neutral-mute: #f7f7f8;
-    --color-neutral-soft: #616371;
-    --bg-element: var(--color-neutral-mute);
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	border-width: 0;
+	border-style: solid;
+	border-color: #e5e7eb;
 }
 :root {
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
+	--color-secondary: #2d314d;
+	--color-primary: #c87030;
+	--color-neutral: #9597a5;
+	--color-neutral-mute: #f7f7f8;
+	--color-neutral-soft: #616371;
+	--bg-element: var(--color-neutral-mute);
+	--bg: var(--color-neutral-mute);
+	--text: var(--color-secondary);
+	--text-soft: var(--color-neutral-soft);
+	--active: var(--color-primary);
+}
+:root {
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
 }
 a {
-    color: inherit;
-    text-decoration: inherit;
+	color: inherit;
+	text-decoration: inherit;
+	font-weight: 600;
+}
+li {
+	list-style: none;
+}
+.light {
+	--bg-element: var(--color-neutral-mute);
+	--bg: var(--color-neutral-mute);
+	--text: var(--color-secondary);
+	--text-soft: var(--color-neutral-soft);
+	--active: var(--color-primary);
+}
+.dark {
+	--bg-element: var(--color-secondary);
+	--bg: var(--color-secondary);
+	--text: var(--color-neutral-mute);
+	--text-soft: var(--color-neutral);
+	--active: var(--color-primary);
+}
+@media (prefers-color-scheme: dark) {
+	* {
+		--bg-element: var(--color-secondary);
+		--bg: var(--color-secondary);
+		--text: var(--color-neutral-mute);
+		--text-soft: var(--color-neutral);
+		--active: var(--color-primary);
+	}
 }
 body {
-    margin: 0;
-    font-family: inherit;
-    line-height: inherit;
+	margin: 0;
+	font-family: inherit;
+	line-height: inherit;
+	background-color: var(--bg);
+	color: var(--text);
 }
 html {
-    -webkit-text-size-adjust: 100%;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
-        Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-    line-height: 1.5;
+	-webkit-text-size-adjust: 100%;
+	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+	line-height: 1.5;
 }
 h1,
 p,
 h2 {
-    margin: 0;
+	margin: 0;
 }
 h1,
 h2 {
-    font-size: inherit;
-    font-weight: inherit;
+	font-size: inherit;
 }
 svg {
-    display: block;
-    vertical-align: middle;
+	display: block;
+}
+
+p {
+	color: var(--text-soft);
+}
+a:hover {
+	text-decoration: underline;
 }
