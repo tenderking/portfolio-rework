@@ -1,6 +1,8 @@
 <template>
   <nav aria-label="Main">
-    <IconLogo />
+    <NuxtLink to="/">
+      <IconLogo />
+    </NuxtLink>
 
     <div>
       <ul ref="target" :class="{ hidden: isMobile === true && isOpen === false }">

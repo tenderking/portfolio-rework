@@ -62,6 +62,9 @@ body {
 	background-color: var(--bg);
 	color: var(--text);
 }
+#__nuxt {
+	height: 100vh;
+}
 html {
 	-webkit-text-size-adjust: 100%;
 	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
