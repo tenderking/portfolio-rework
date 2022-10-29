@@ -13,5 +13,8 @@
 		"@vueuse/nuxt": "^9.4.0",
 		"nuxt": "3.0.0-rc.12",
 		"sass": "^1.55.0"
+	},
+	"dependencies": {
+		"nuxt-icons": "^2.0.2"
 	}
 }

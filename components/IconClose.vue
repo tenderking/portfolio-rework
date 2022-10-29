@@ -1,11 +1,6 @@
 <template>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="18"
-		height="19"
-		aria-labelledby="icon-close"
-		role="button"
-	>
+	<svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" aria-labelledby="icon-close" role="button"
+		fill="white">
 		<title id="icon-close"></title>
 		<g fill="#2D314D" fill-rule="evenodd">
 			<path d="M.868.661l16.97 16.97-.706.708L.162 1.369z" />

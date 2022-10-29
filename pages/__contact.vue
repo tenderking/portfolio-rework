@@ -9,4 +9,5 @@
 <script lang="ts" setup>
 const layout = "nav-and-footer"
 definePageMeta({ layout: false });
+
 </script>

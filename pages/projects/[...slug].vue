@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 main {
-	height: 100%;
+	min-height: 100%;
 	padding: 1em;
 
 
