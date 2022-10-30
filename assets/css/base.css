@@ -5,20 +5,23 @@
 	box-sizing: border-box;
 	border-width: 0;
 	border-style: solid;
-	border-color: #e5e7eb;
+	border-color: hsl(220, 13%, 91%);
 }
 :root {
-	--color-secondary: #2d314d;
-	--color-primary: #c87030;
-	--color-neutral: #9597a5;
-	--color-neutral-mute: #f7f7f8;
-	--color-neutral-soft: #616371;
+	--color-accent: hsl(201, 100%, 50%);
+	--color-secondary: hsl(233, 26%, 24%);
+	--color-primary: hsl(25, 61%, 49%);
+	--color-neutral: hsl(233, 8%, 62%);
+	--color-neutral-mute: hsl(240, 7%, 97%);
+	--color-neutral-soft: hsl(232, 8%, 41%);
 	--bg-element: var(--color-neutral-mute);
 	--bg: var(--color-neutral-mute);
 	--text: var(--color-secondary);
 	--text-soft: var(--color-neutral-soft);
 	--active: var(--color-primary);
 	--screen-desktop: 640px;
+	--bg-grad-top: var(--color-accent);
+	--bg-neutral: var(--color-neutral);
 }
 :root {
 	-moz-tab-size: 4;
@@ -46,6 +49,8 @@ li {
 	--text: var(--color-neutral-mute);
 	--text-soft: var(--color-neutral);
 	--active: var(--color-primary);
+	--bg-grad-top: var(--bg);
+	--bg-neutral: var(--color-neutral-soft);
 }
 @media (prefers-color-scheme: dark) {
 	* {
@@ -54,6 +59,8 @@ li {
 		--text: var(--color-neutral-mute);
 		--text-soft: var(--color-neutral);
 		--active: var(--color-primary);
+		--bg-grad-top: var(--bg);
+		--bg-neutral: var(--color-neutral-soft);
 	}
 }
 body {
@@ -79,7 +86,9 @@ h2 {
 	margin: 0;
 }
 h1,
-h2 {
+h2,
+h3,
+h4 {
 	font-size: inherit;
 }
 svg {

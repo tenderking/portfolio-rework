@@ -11,10 +11,10 @@
     </pre> -->
       <div class="grid-container">
         <template v-for="route in navigation[1].children" :key="route._path">
-          <NuxtLink class="card gradient-border" :to="`${route._path}`">
+          <NuxtLink class="card " :to="`${route._path}`">
 
             <h2>{{ route.title }}</h2>
-
+            <img src="@/assets/icons/blob.svg" alt="blob" height="200px" width="250px">
           </NuxtLink>
 
         </template>
@@ -28,6 +28,21 @@ main {
   width: 100vw;
   text-align: center;
 
+  h1 {
+    background: -webkit-linear-gradient(315deg, var(--color-primary) 25%, var(--color-accent));
+    background-clip: border-box;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 2rem;
+  }
+
   .grid-container {
     padding: 1em;
     display: flex;
@@ -40,10 +55,20 @@ main {
       width: 100%;
       display: grid;
       justify-content: center;
-      height: 150px;
+      border-radius: 0.5rem;
+
+
+
       align-items: center;
       text-align: center;
-      background-color: var(--bg-element);
+      background: -webkit-linear-gradient(315deg, var(--color-accent) 5%, var(--color-primary));
+      background-clip: border-box;
+
+
+      h2 {
+        color: var(--bg)
+      }
+
     }
   }
 }
@@ -58,8 +83,7 @@ main {
 
       .card {
         padding: 2rem 1rem;
-        width: 200px;
-        height: 150px;
+        height: 300px;
       }
 
     }

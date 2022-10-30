@@ -20,9 +20,9 @@
         </li> -->
       </ul>
     </div>
-    <i @click="toggleButton()" v-if="isMobile">
-      <IconClose v-if="isOpen" />
-      <IconHamburger v-else />
+    <i v-if="isMobile">
+      <IconClose @click="toggleButton()" v-if="isOpen" />
+      <IconHamburger @click="toggleButton()" v-else />
     </i>
   </nav>
 </template>
@@ -30,7 +30,7 @@
 import { useMediaQuery, useToggle } from "@vueuse/core";
 const isMobile = useMediaQuery("(max-width: 640px)");
 const target = ref(null)
-const [isOpen = ref(true), toggleButton] = useToggle();
+const [isOpen = ref(false), toggleButton] = useToggle();
 
 function closeMenu() {
   isOpen.value = false
