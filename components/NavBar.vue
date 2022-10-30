@@ -5,7 +5,7 @@
     </NuxtLink>
 
     <div>
-      <ul ref="target" :class="{ hidden: isMobile === true && isOpen === false }">
+      <ul :class="{ hidden: isMobile === true && isOpen === false }">
         <li>
           <NuxtLink tabindex="0" to="/">Work</NuxtLink>
         </li>
@@ -20,9 +20,9 @@
         </li> -->
       </ul>
     </div>
-    <i v-if="isMobile">
-      <IconClose @click="toggleButton()" v-if="isOpen" />
-      <IconHamburger @click="toggleButton()" v-else />
+    <i @click="toggleButton()" v-if="isMobile">
+      <IconClose v-if="isOpen" />
+      <IconHamburger v-else />
     </i>
   </nav>
 </template>
@@ -35,9 +35,9 @@ const [isOpen = ref(false), toggleButton] = useToggle();
 function closeMenu() {
   isOpen.value = false
 }
-onClickOutside(target, () => {
-  isOpen.value = false
-})
+// onClickOutside(target, () => {
+//   isOpen.value = false
+// })
 
 watch(isMobile, () => {
   if (isMobile) { isOpen.value = false }
