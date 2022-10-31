@@ -31,6 +31,13 @@ Users should be able to:
 
 ![image](https://user-images.githubusercontent.com/10375060/190131520-1814d38a-3dc3-426c-a733-7b5db00bb1a1.png)
 
+<style type="text/css">
+    img {
+        width: 100%;
+       
+    }
+</style>
+
 ### Links
 
 - Solution URL: [Github repository](https://github.com/tenderking/easybank-landing-page)

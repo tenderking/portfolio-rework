@@ -14,7 +14,7 @@
           <NuxtLink class="card " :to="`${route._path}`">
 
             <h2>{{ route.title }}</h2>
-            <img src="@/assets/icons/blob.svg" alt="blob" height="200px" width="250px">
+            <img src="@/assets/icons/blob.svg" alt="blob" height="200" width="250">
           </NuxtLink>
 
         </template>
@@ -23,6 +23,9 @@
     </ContentNavigation>
   </main>
 </template>
+<script lang="ts" setup>
+
+</script>
 <style lang="scss" scoped>
 main {
   width: 100vw;

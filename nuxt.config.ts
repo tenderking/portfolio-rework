@@ -12,6 +12,25 @@ export default defineNuxtConfig({
 
   content: {
     navigation: { fields: ['author', 'publishedAt'] },
+    markdown: {
+      toc: {
+        depth: 2,
+        searchDepth: 2
+      },
+      anchorLinks: true,
+
+    },
+    highlight: {
+      theme: {
+        // Default theme (same as single string)  
+        default: 'github-light',
+        // Theme used if `html.dark`    
+        dark: 'github-dark',
+        // Theme used if `html.sepia`      
+        sepia: 'monokai'
+      }
+    }
+
 
   }
 

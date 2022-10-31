@@ -29,18 +29,18 @@
 <script lang="ts" setup>
 import { useMediaQuery, useToggle } from "@vueuse/core";
 const isMobile = useMediaQuery("(max-width: 640px)");
-const target = ref(null)
+// const target = ref(null)
 const [isOpen = ref(false), toggleButton] = useToggle();
 
-function closeMenu() {
-  isOpen.value = false
-}
+// function closeMenu() {
+//   isOpen.value = false
+// }
 // onClickOutside(target, () => {
 //   isOpen.value = false
 // })
 
 watch(isMobile, () => {
-  if (isMobile) { isOpen.value = false }
+  isOpen.value = false
 })
 </script>
 <style lang="scss">

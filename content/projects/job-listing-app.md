@@ -27,6 +27,13 @@ Users should be able to:
 
 ![Screenshot](https://user-images.githubusercontent.com/10375060/156828701-e821c6fb-a4f1-4b20-a4f4-3b85c37cc140.png)
 
+<style type="text/css">
+    img {
+        width: 100%;
+        
+    }
+</style>
+
 <!-- Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
 
 Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
