@@ -50,6 +50,7 @@ main {
     padding: 1em;
     display: flex;
     flex-direction: column;
+
     align-items: center;
     gap: 1em;
 
@@ -80,8 +81,11 @@ main {
   main {
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      width: min-content;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      max-width: 800px;
+      width: 100%;
+      // justify-content: center;
+
       margin: auto;
 
       .card {

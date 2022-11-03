@@ -50,7 +50,7 @@ nav {
   ul {
     position: absolute;
     inset: 2em 0 auto 0;
-    background-color: var(--bg);
+    background-color: var(--color-primary);
     gap: 1em;
     flex-direction: column;
 
