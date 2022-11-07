@@ -4,27 +4,26 @@
       <IconLogo />
     </NuxtLink>
 
+    <div class="wrapper">
+      <ul ref="target" :class="isHidden ? 'hidden' : 'show'" v-on-click-outside="closeModal">
+        <li>
+          <NuxtLink tabindex="0" to="/">Work</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink tabindex="0" to="/about">About</NuxtLink>
+        </li>
 
-    <ul ref="target" :class="isHidden ? 'hidden' : 'show'" v-on-click-outside="closeModal">
-      <li>
-        <NuxtLink tabindex="0" to="/">Work</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink tabindex="0" to="/about">About</NuxtLink>
-      </li>
-      <!-- <li>
-          <NuxtLink tabindex="0" to="/Contact">Contact</NuxtLink>
-        </li> -->
-      <!-- <li>
+        <!-- <li>
           <NuxtLink tabindex="0" to="/Blog">Blog</NuxtLink>
         </li> -->
-    </ul>
+      </ul>
 
-
-    <i v-if="isMobile">
-      <IconHamburger v-if="isHidden" @click="openModal" />
-      <IconClose v-else @click="closeModal" />
-    </i>
+      <ButtonToggle tabindex="0" />
+      <i v-if="isMobile">
+        <IconHamburger v-if="isHidden" @click="openModal" />
+        <IconClose v-else @click="closeModal" />
+      </i>
+    </div>
   </nav>
 </template>
 <script lang="ts" setup>
@@ -38,6 +37,8 @@ function closeModal() {
 function openModal() {
   isHidden.value = false
 }
+
+
 </script>
 <style lang="scss" scoped>
 nav {
@@ -46,49 +47,70 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-
-  ul {
-    position: absolute;
-    inset: 2em 0 auto 0;
-    background-color: var(--color-primary);
-    gap: 1em;
-    flex-direction: column;
-
-    padding: 1em;
-    gap: 1em;
-    border-radius: 1em;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    text-align: center;
-    z-index: 10;
-    margin-inline: 2em;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .show {
+  .wrapper {
     display: flex;
-  }
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
 
-
-}
-
-@media (min-width:640px) {
-  nav {
     ul {
-      position: static;
+      position: absolute;
       inset: 2em 0 auto 0;
-      padding: 0;
-      display: flex;
+      background-color: var(--color-primary);
       gap: 1em;
-      flex-direction: row;
-      background-color: var(--bg);
+      flex-direction: column;
 
+      padding: 1em;
+      gap: 1em;
+      border-radius: 1em;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      text-align: center;
+      z-index: 10;
+      margin-inline: 2em;
+      display: none;
+    }
+
+    i {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .hidden {
+      display: none;
+    }
+
+    .show {
       display: flex;
+    }
+
+
+  }
+}
+
+/**large screens */
+
+@media (min-width:640px) {
+
+  nav {
+    .wrapper {
+
+      ul {
+        position: static;
+        inset: 2em 0 auto 0;
+        padding: 0;
+        display: flex;
+        gap: 1em;
+        flex-direction: row;
+        background: none;
+        box-shadow: none;
+
+
+      }
+
+      .hidden {
+        display: flex;
+      }
     }
   }
 }

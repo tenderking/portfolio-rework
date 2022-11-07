@@ -42,6 +42,9 @@ li {
 	--text: var(--color-secondary);
 	--text-soft: var(--color-neutral-soft);
 	--active: var(--color-primary);
+	--screen-desktop: 640px;
+	--bg-grad-top: var(--color-accent);
+	--bg-neutral: var(--color-neutral);
 }
 .dark {
 	--bg-element: var(--color-secondary);
@@ -53,7 +56,7 @@ li {
 	--bg-neutral: var(--color-neutral-soft);
 }
 @media (prefers-color-scheme: dark) {
-	* {
+	:root {
 		--bg-element: var(--color-secondary);
 		--bg: var(--color-secondary);
 		--text: var(--color-neutral-mute);
@@ -100,4 +103,8 @@ p {
 }
 a:hover {
 	text-decoration: underline;
+}
+button {
+	border: none;
+	background: 0;
 }
