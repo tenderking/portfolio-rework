@@ -13,9 +13,9 @@
           <NuxtLink tabindex="0" to="/about">About</NuxtLink>
         </li>
 
-        <!-- <li>
+        <li>
           <NuxtLink tabindex="0" to="/Blog">Blog</NuxtLink>
-        </li> -->
+        </li>
       </ul>
 
       <ButtonToggle tabindex="0" />

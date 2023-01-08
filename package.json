@@ -8,14 +8,14 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
-		"@nuxt/content": "^2.2.0",
-		"@vueuse/core": "^9.4.0",
-		"@vueuse/nuxt": "^9.4.0",
-		"nuxt": "3.0.0-rc.12",
-		"sass": "^1.55.0"
+		"@nuxt/content": "^2.2.2",
+		"@vueuse/core": "^9.10.0",
+		"@vueuse/nuxt": "^9.10.0",
+		"nuxt": "3.0.0",
+		"sass": "^1.57.1"
 	},
 	"dependencies": {
-		"@vueuse/components": "^9.4.0",
-		"nuxt-icons": "^2.0.2"
+		"@vueuse/components": "^9.10.0",
+		"nuxt-icons": "^3.0.0"
 	}
 }
