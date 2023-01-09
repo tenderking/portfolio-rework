@@ -16,8 +16,9 @@ h1 {
 
 .blog-article {
 	padding: 1em;
-
-	margin: 2rem;
+	border: solid 2px var(--color-neutral);
+	margin: auto;
+	max-width: 960px;
 
 }
 </style>

@@ -9,14 +9,14 @@ export default defineNuxtConfig({
 
   css: [
     "@/assets/css/base.css",
-    // "@/assets/css/utils.css",
+    "@/assets/css/utils.css",
   ],
 
   content: {
     highlight: {
       theme: {
         // Default theme (same as single string)  
-        default: 'github-light',
+        default: 'github-dark'
       }
     }
   }

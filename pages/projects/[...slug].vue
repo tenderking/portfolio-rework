@@ -1,6 +1,6 @@
 <template>
 	<main class="ass">
-		<div class="gradient-border">
+		<div class="project gradient-border">
 			<ContentDoc />
 		</div>
 	</main>
@@ -15,6 +15,15 @@ main {
 	div {
 		padding: 1em;
 		height: 100%;
+
+	}
+
+	.project {
+		padding: 1em;
+		border: solid 2px var(--color-neutral);
+		margin: auto;
+		max-width: 960px;
+
 
 	}
 }
