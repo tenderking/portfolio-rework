@@ -1,6 +1,23 @@
-# Frontend Mentor - Job listings with filtering solution
+---
+author: "George Mushore"
+date: "15-06-2022"
+imgUrl: "blobo.svg"
+---
+
+# Job listings with filtering
 
 This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+
+### Screenshot
+
+![Screenshot](https://user-images.githubusercontent.com/10375060/156828701-e821c6fb-a4f1-4b20-a4f4-3b85c37cc140.png)
+
+<style type="text/css">
+    img {
+        width: 80%;
+        
+    }
+</style>
 
 ## Table of contents
 
@@ -22,25 +39,6 @@ Users should be able to:
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Filter job listings based on the categories
-
-### Screenshot
-
-![Screenshot](https://user-images.githubusercontent.com/10375060/156828701-e821c6fb-a4f1-4b20-a4f4-3b85c37cc140.png)
-
-<style type="text/css">
-    img {
-        width: 100%;
-        
-    }
-</style>
-
-<!-- Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.** -->
 
 ### Links
 
@@ -123,30 +121,25 @@ This is where you can give a hat tip to anyone who helped you out on this projec
 
 **Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
 
-## Install the dependencies
-
 ```
+# Install the dependencies
 npm install
-```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-
-```
+# Start the app in development mode (hot-code reloading, error reporting, etc.)
 npx quasar dev
-```
 
-### Lint the files
-
-```
+# Lint the files
 npx run lint
-```
 
-### Build the app for production
-
-```
+# Build the app for production
 npx quasar build
 ```
 
 ### Customize the configuration
 
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+## Author
+
+- Website - [George Mushore](https://www.georgemushore.com)
+- Frontend Mentor - [@tenderking](https://www.frontendmentor.io/profile/tenderking)

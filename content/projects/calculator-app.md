@@ -1,33 +1,27 @@
 ---
-title: Calculator
-author: "Sébastien Chopin"
-publishedAt: "15-06-2022"
+author: "George Mushore"
+date: "15-06-2022"
+imgUrl: "blob.svg"
 ---
 
-# Frontend Mentor - Calculator app solution
+# Calculator App
 
 This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Table of contents
-
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-- [Nuxt Setup](#nuxt-setup)
-  - [Setup](#setup)
-  - [Development Server](#development-server)
-  - [Production](#production)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
 ## Overview
 
+### Screenshot
+
+![image](https://github.com/tenderking/calculator-nuxt-app/raw/master/screenshot.png)
+
+### Links
+
+- Solution URL: [Calculator Repo](https://github.com/tenderking/calculator-nuxt-app)
+- Live Site URL: [Live Site](https://calculator-nuxt-app.vercel.app/)
+
 ### The challenge
+
+The challenge is to build out this calculator app and get it looking as close to the design as possible which is provided by frontend mentor. Any tools you like could be used to help complete the challenge. I wished to practice my typescript skills using nuxt, a vuejs framework.
 
 Users should be able to:
 
@@ -35,15 +29,6 @@ Users should be able to:
 - Perform mathmatical operations like addition, subtraction, multiplication, and division
 - Adjust the color theme based on their preference
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
-
-### Screenshot
-
-![](./screenshot.png)
-
-### Links
-
-- Solution URL: [Calculator Repo](https://github.com/tenderking/calculator-nuxt-app)
-- Live Site URL: [Live Site](https://calculator-nuxt-app.vercel.app/)
 
 ## My process
 
@@ -57,7 +42,7 @@ We worked with pair programming. And I make sure I use something new of every pr
 - CSS Grid
 - Mobile-first workflow
 - [Vue](https://vuejs.org/) - JS library
-- [Nuxt.js](https://nuxtjs.org/) - React framework
+- [Nuxt.js](https://nuxtjs.org/) - Vue framework
 - [NUxt Tailwind](https://tailwindcss.nuxtjs.org/) - For styles
 
 ### What I learned
@@ -81,43 +66,25 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
+
 
 # npm
 npm install
 
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-### Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
+# Start the development server on http://localhost:3000
 npm run dev
-```
 
-### Production
-
-Build the application for production:
-
-```bash
+#Build the application for production:
 npm run build
-```
 
-Locally preview production build:
-
-```bash
-npm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/tenderking)
+- Frontend Mentor - [@tenderking](https://www.frontendmentor.io/profile/tenderking)
+- Github - [@tenderking](https://github.com/tenderking/)
 
 ## Acknowledgments
 

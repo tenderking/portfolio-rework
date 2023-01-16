@@ -1,35 +1,44 @@
-<template>
-  <main>
-    <h1>My projects</h1>
-    <p>
-      I have a passion for technology and digitalization. - Currently working at Telenor
-    </p>
-    <ContentNavigation path="/projects/" v-slot="{ navigation }">
-      <!-- <pre>
-    {{ navigation[1] }} 
-    
-    </pre> -->
-      <div class="grid-container">
-        <template v-for="route in navigation[1].children" :key="route._path">
-          <NuxtLink class="card " :to="`${route._path}`">
 
-            <h2>{{ route.title }}</h2>
-            <img src="@/assets/icons/blob.svg" alt="blob" height="200" width="250">
-          </NuxtLink>
-
-        </template>
-      </div>
-
-    </ContentNavigation>
-  </main>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
+const projects = await queryContent('projects').only(['_path', 'title', 'imgUrl']).find()
 
 </script>
+<template>
+  <main>
+    <header>
+      <img src="@/assets/icons/Mask.svg" width="200" height="200" />
+      <h1>George Mushore</h1>
+      <p class="pitch">
+        Hi. I'm George, welcome to my personal website. I have a passion for technology and digitalization.
+        <br /> - Currently
+        working at Telenor
+      </p>
+    </header>
+    <h2>My projects</h2>
+
+
+
+    <template v-if="projects">
+      <div class="grid-container">
+        <template v-for="route in projects" :key="route._path">
+          <NuxtLink class="card " :to="`${route._path}`">
+            <h2>{{ route.title }}</h2>
+
+            <img :src="route.imgUrl" alt="blob" height="200" width="250">
+          </NuxtLink>
+        </template>
+      </div>
+    </template>
+
+
+  </main>
+</template>
+
 <style lang="scss" scoped>
 main {
   width: 100vw;
   text-align: center;
+
 
   h1 {
     background: -webkit-linear-gradient(315deg, var(--color-primary) 25%, var(--color-accent));
@@ -44,6 +53,11 @@ main {
 
   p {
     margin-bottom: 2rem;
+    margin-inline: auto;
+  }
+
+  p.pitch {
+    max-width: 45ch;
   }
 
   .grid-container {

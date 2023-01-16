@@ -12,13 +12,20 @@ defineProps({
 </script>
 
 <template>
-	<NuxtLink :href="href">
+	<NuxtLink class="doc-links" :href="href">
 		<slot />
 	</NuxtLink>
 </template>
 <style lang="scss">
-a {
+a.doc-links {
 	color: var(--color-primary);
 	font-weight: 400;
+}
+
+@media (prefers-color-scheme: dark) {
+	a.doc-links {
+		color: var(--color-accent);
+
+	}
 }
 </style>

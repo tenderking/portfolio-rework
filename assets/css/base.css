@@ -9,8 +9,8 @@
 }
 :root {
 	--color-accent: hsl(201, 100%, 50%);
-	--color-secondary: hsl(233, 26%, 24%);
-	--color-primary: hsl(25, 61%, 49%);
+	--color-secondary: #2d314d;
+	--color-primary: #c97031;
 	--color-neutral: hsl(233, 8%, 62%);
 	--color-neutral-mute: hsl(240, 7%, 97%);
 	--color-neutral-soft: hsl(232, 8%, 41%);
