@@ -14,7 +14,7 @@
         </li>
 
         <li>
-          <NuxtLink tabindex="0" to="/Blog">Blog</NuxtLink>
+          <NuxtLink tabindex="0" to="/blog">Blog</NuxtLink>
         </li>
       </ul>
 
