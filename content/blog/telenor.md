@@ -2,9 +2,14 @@
 author: "George Mushore"
 date: "04-02-2023"
 imgUrl: "bloba.svg"
+description: "I recently started my journey at Telenor as a platform developer and I've learned so much during this time. The past few months have been a great learning experience for me, both professionally and personally."
+tags:
+  - tech
 ---
 
-# My Experience at Telenor - A Journey as a Platform Developer
+# My Experience at Telenor
+
+## A Journey as a Platform Developer
 
 I recently started my journey at Telenor as a platform developer and I've learned so much during this time. The past few months have been a great learning experience for me, both professionally and personally.
 

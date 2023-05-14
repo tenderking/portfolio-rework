@@ -2,9 +2,12 @@
 author: "George Mushore"
 date: "04-02-2023"
 imgUrl: "bloba.svg"
+tags:
+  - coding
+  - tech
 ---
 
-# My Experience with Frontend Mentor
+# Frontend Mentor
 
 I've been working with Frontend Mentor for a few months now and it has been a great experience for me as a frontend developer. It's been a great way to work hands-on with frontend development and improve my skills.
 

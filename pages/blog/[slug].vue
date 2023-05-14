@@ -1,46 +1,37 @@
 <template>
-	<div class="flex-col container">
-		<SideBar class="side-bar" />
-		<div class="article">
-			<ContentDoc />
-		</div>
-	</div>
+  <div class="flex-col container">
+    <SideBar class="side-bar" />
+    <div class="article">
+      <ContentDoc />
+    </div>
+  </div>
 </template>
-<style  scoped>
+<style scoped>
 .container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  max-width: 80rem;
 
-	display: grid;
-	grid-template-columns: auto 1fr;
-	max-width: 80rem;
-
-	margin-left: auto;
-	margin-right: auto;
-	padding-inline: 2em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .side-bar {
-	grid-column: 1/2;
-	border-right: solid 2px var(--text-soft);
-	color: var(--text);
-	display: none;
-
-
-
+  grid-column: 1/2;
+  border-right: solid 2px var(--text-soft);
+  color: var(--text);
+  display: none;
 }
 
 .article {
-	margin: auto;
-	padding: 1em;
-	grid-column: 2/3;
-
+  margin: auto;
+  padding: 1em;
+  grid-column: 2/3;
 }
 
-
-
-@media (min-width:640px) {
-	.side-bar {
-		display: block;
-
-	}
+@media (min-width: 640px) {
+  .side-bar {
+    display: block;
+  }
 }
 </style>

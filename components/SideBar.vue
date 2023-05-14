@@ -1,46 +1,40 @@
 <script lang="ts" setup>
-const blogs = await queryContent('blog').only(['_path', 'title', 'description', 'date']).find()
-
+const blogs = await queryContent("blog")
+  .only(["_path", "title", "description", "date"])
+  .find();
 </script>
 
-
-
-
 <template>
-	<div class="sidebar">
+  <div class="sidebar">
+    <h2>My Blogs</h2>
 
-		<h2>My Blogs</h2>
-
-		<ul v-for="article in blogs" :key="article._path">
-			<li class="blog-article">
-				<NuxtLink :to="`${article._path}`">
-					{{ article.title }}
-				</NuxtLink>
-			</li>
-
-		</ul>
-
-
-	</div>
+    <ul>
+      <li v-for="article in blogs" :key="article._path" class="blog-article">
+        <NuxtLink :to="`${article._path}`">
+          {{ article.title }}
+        </NuxtLink>
+      </li>
+    </ul>
+  </div>
 </template>
 
-
-
-<style>
+<style scoped>
 .sidebar {
-
-	width: 200px;
-	height: 100%;
-
-
-	left: 0;
-
+  width: 200px;
+  /* height: 100%; */
+  padding: 1rem;
+  left: 0;
+}
+ul {
+  padding: 0;
+}
+li {
+  padding-left: 0.75rem;
+  border-left: solid 1px var(--text-soft);
 }
 
-li {}
-
 a {
-	font-weight: normal;
-	color: var(--text-soft);
+  font-weight: normal;
+  color: var(--text-soft);
 }
 </style>

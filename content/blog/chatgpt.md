@@ -2,9 +2,15 @@
 author: "George Mushore"
 date: "04-02-2023"
 imgUrl: "bloba.svg"
+description: "I've been using ChatGPT for a variety of purposes over the past few months, including frontend development, Vue, and even for some random subjects. It's a cool tool, but it's not a silver bullet."
+tags:
+  - coding
+  - tech
 ---
 
-# My Experience with ChatGPT - A Cool Tool with Limitations
+# My Experience with ChatGPT
+
+## A Cool Tool with Limitations
 
 I've been using ChatGPT for a variety of purposes over the past few months, including frontend development, Vue, and even for some random subjects. It's a cool tool, but it's not a silver bullet.
 
