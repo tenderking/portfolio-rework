@@ -1,12 +1,14 @@
-<script lang="ts" setup>
-const blogs = await queryContent("blog")
+<script setup lang="ts">
+// get all blogs with the tag
+
+const route = useRoute();
+const blogs = await queryContent("blog/")
+  .where({ tags: { $contains: [`${route.params.slug}`] } })
   .only(["_path", "title", "description", "date", "tags"])
   .find();
 </script>
-
 <template>
-  <h1>My Blogs</h1>
-  <TagsList />
+  <h1># {{ route.params.slug }}</h1>
 
   <div class="blog-cards_container">
     <BlogCard
@@ -15,6 +17,8 @@ const blogs = await queryContent("blog")
       :article="article"
     />
   </div>
+
+  <!-- <pre>{{ blogs }}</pre> -->
 </template>
 <style lang="scss" scoped>
 h1 {
@@ -40,7 +44,9 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
-  margin: 1rem;
+  margin: 0 auto;
+  // center the cards
+  max-width: 80rem;
   padding: 1rem;
 }
 </style>
