@@ -2,6 +2,12 @@
 const blogs = await queryContent("blog")
   .only(["_path", "title", "description", "date"])
   .find();
+const route = useRoute();
+const blogPath = await blogs.map((blog) => blog._path.replace("/blog/", ""));
+console.log(blogPath);
+console.log(route.params.slug);
+const isActiveBlog = blogPath.includes(route.params.slug);
+console.log(isActiveBlog);
 </script>
 
 <template>
@@ -10,7 +16,10 @@ const blogs = await queryContent("blog")
 
     <ul>
       <li v-for="article in blogs" :key="article._path" class="blog-article">
-        <NuxtLink :to="`${article._path}`">
+        <NuxtLink
+          :to="`${article._path}`"
+          :active-class="isActiveBlog ? 'active' : ''"
+        >
           {{ article.title }}
         </NuxtLink>
       </li>
@@ -36,5 +45,9 @@ li {
 a {
   font-weight: normal;
   color: var(--text-soft);
+}
+.active {
+  color: var(--color-primary);
+  font-weight: bold;
 }
 </style>

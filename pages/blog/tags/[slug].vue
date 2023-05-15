@@ -44,9 +44,12 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
-  margin: 0 auto;
-  // center the cards
   max-width: 80rem;
+  width: 100%;
+  justify-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
   padding: 1rem;
 }
 </style>

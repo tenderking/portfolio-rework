@@ -1,7 +1,7 @@
-
 <script setup lang="ts">
-const projects = await queryContent('projects').only(['_path', 'title', 'imgUrl']).find()
-
+const projects = await queryContent("projects")
+  .only(["_path", "title", "imgUrl"])
+  .find();
 </script>
 <template>
   <main>
@@ -9,28 +9,25 @@ const projects = await queryContent('projects').only(['_path', 'title', 'imgUrl'
       <img src="@/assets/icons/Mask.svg" width="200" height="200" />
       <h1>George Mushore</h1>
       <p class="pitch">
-        Hi. I'm George, welcome to my personal website. I have a passion for technology and digitalization.
-        <br /> - Currently
-        working at Telenor
+        Hi. I'm George, welcome to my personal website. I have a passion for
+        technology and digitalization.
+        <br />
+        - Currently working at Telenor
       </p>
     </header>
     <h2>My projects</h2>
 
-
-
     <template v-if="projects">
       <div class="grid-container">
         <template v-for="route in projects" :key="route._path">
-          <NuxtLink class="card " :to="`${route._path}`">
+          <NuxtLink class="card" :to="`${route._path}`">
             <h2>{{ route.title }}</h2>
 
-            <img :src="route.imgUrl" alt="blob" height="200" width="250">
+            <img :src="route.imgUrl" alt="blob" height="200" width="250" />
           </NuxtLink>
         </template>
       </div>
     </template>
-
-
   </main>
 </template>
 
@@ -39,9 +36,12 @@ main {
   width: 100vw;
   text-align: center;
 
-
   h1 {
-    background: -webkit-linear-gradient(315deg, var(--color-primary) 25%, var(--color-accent));
+    background: -webkit-linear-gradient(
+      315deg,
+      var(--color-primary) 25%,
+      var(--color-accent)
+    );
     background-clip: border-box;
     background-clip: text;
     -webkit-background-clip: text;
@@ -75,18 +75,18 @@ main {
       justify-content: center;
       border-radius: 0.5rem;
 
-
-
       align-items: center;
       text-align: center;
-      background: -webkit-linear-gradient(315deg, var(--color-accent) 5%, var(--color-primary));
+      background: -webkit-linear-gradient(
+        315deg,
+        var(--color-accent) 5%,
+        var(--color-primary)
+      );
       background-clip: border-box;
 
-
       h2 {
-        color: var(--bg)
+        color: var(--bg);
       }
-
     }
   }
 }
@@ -96,7 +96,7 @@ main {
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      max-width: 800px;
+      max-width: 80rem;
       width: 100%;
       // justify-content: center;
 
@@ -106,7 +106,6 @@ main {
         padding: 2rem 1rem;
         height: 300px;
       }
-
     }
   }
 }

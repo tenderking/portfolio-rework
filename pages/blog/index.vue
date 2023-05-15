@@ -42,5 +42,7 @@ h1 {
   grid-gap: 20px;
   margin: 1rem;
   padding: 1rem;
+  justify-items: center;
+  max-width: 80rem;
 }
 </style>
