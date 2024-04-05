@@ -8,18 +8,14 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
-		"@nuxt/content": "latest",
-		"@types/node": "^20.0.0",
+		"@nuxt/content": "^2.12.1",
 		"@vueuse/core": "latest",
 		"@vueuse/nuxt": "latest",
 		"nuxt": "latest",
-		"sass": "latest",
-		"typescript": "^5.0.4",
-		"vue": "^3.2.47"
+		"sass": "latest"
 	},
 	"dependencies": {
 		"@vueuse/components": "latest",
-		"nuxt-icons": "latest",
-		"vue-router": "^4.1.6"
+		"nuxt-icons": "latest"
 	}
 }
