@@ -1,21 +1,51 @@
 <script setup lang="ts">
+const title = ref('George Mushore')
+
+useSeoMeta({
+  title,
+  description: () => `description: ${title.value}`
+})
+useHead({
+   meta: [
+    {
+      name: 'description',
+      content: 'George Mushore personal website'
+    }
+  ],
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: 'favicon.ico'
+    }
+  ]
+})
 const projects = await queryContent("projects")
   .only(["_path", "title", "imgUrl"])
-  .find();
+  .find()
 </script>
 <template>
+  <hr />
   <main>
     <header>
       <img src="@/assets/icons/Mask.svg" width="200" height="200" />
       <h1>George Mushore</h1>
+      <h2 class="punchline">Welcome to my personal website.</h2>
       <p class="pitch">
-        Hi. I'm George, welcome to my personal website. I have a passion for
-        technology and digitalization.
-        <br />
-        - Currently working at Telenor
+        Hi, I'm George! I'm a passionate engineer specializing in machine
+        learning and sensor technology. Fueled by a thirst for knowledge, I
+        graduated from the Norwegian Arctic University with a degree in
+        Technology and continuously develop my skills as a self-taught
+        developer.
+      </p>
+      <p>
+        I'm currently seeking exciting opportunities in the tech or IT industry
+        where I can leverage my expertise and build innovative solutions.
       </p>
     </header>
-    <h2>My projects</h2>
+
+<hr />
+    <h2 class="title">My projects</h2>
 
     <template v-if="projects">
       <div class="grid-container">
@@ -29,35 +59,68 @@ const projects = await queryContent("projects")
       </div>
     </template>
   </main>
+  <!-- show blog page on scroll down -->
 </template>
 
 <style lang="scss" scoped>
+hr {
+  border: none;
+  border-top: 1px solid var(--text);
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
 main {
   width: 100vw;
   text-align: center;
+  margin-bottom: 2rem;
+  header {
+    padding-block: 4rem;
+  }
 
-  h1 {
+  h1,
+  .title {
     background: -webkit-linear-gradient(
       315deg,
-      var(--color-primary) 25%,
+      var(--color-primary) 40%,
       var(--color-accent)
     );
     background-clip: border-box;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 900;
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .title {
+    margin-bottom: 4rem;
   }
 
+  .punchline {
+    background: -webkit-linear-gradient(
+      315deg,
+      var(--color-accent) 15%,
+      var(--text)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+  }
   p {
     margin-bottom: 2rem;
     margin-inline: auto;
+    max-width: 75ch;
+    text-align: left;
+    padding: 1rem;
   }
 
   p.pitch {
-    max-width: 45ch;
+    max-width: 75ch;
   }
 
   .grid-container {
@@ -93,6 +156,23 @@ main {
 
 @media (min-width: 640px) {
   main {
+    h1,
+    .title {
+      font-weight: 700;
+      font-size: 4rem;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    .title {
+      margin-bottom: 4rem;
+    }
+
+    .punchline {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      margin-top: 0.5rem;
+    }
+
     .grid-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -106,6 +186,10 @@ main {
         padding: 2rem 1rem;
         height: 300px;
       }
+    }
+    p {
+      text-align: center;
+      padding: 0;
     }
   }
 }

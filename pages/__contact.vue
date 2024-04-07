@@ -8,6 +8,6 @@
 </template>
 <script lang="ts" setup>
 const layout = "nav-and-footer"
-definePageMeta({ layout: false });
+definePageMeta({ layout: false, title: "Contact" });
 
 </script>

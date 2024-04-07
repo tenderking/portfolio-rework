@@ -7,6 +7,7 @@
   </div>
 </template>
 <style scoped>
+
 .container {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -27,11 +28,18 @@
   margin: auto;
   padding: 1em;
   grid-column: 2/3;
+
 }
+.article-img{
+  width: 100%;
+}
+
 
 @media (min-width: 640px) {
   .side-bar {
     display: block;
   }
+
 }
+
 </style>

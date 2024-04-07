@@ -23,7 +23,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
 defineProps({
   article: {
@@ -37,31 +37,41 @@ defineProps({
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   max-width: fit-content;
-  outline: var(--text) solid 0.125rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease-in-out;
   overflow: hidden;
   display: grid;
   grid-template-rows: 3fr 1fr;
   //  make the card the same height
-  min-height: 22rem;
 
   &:hover {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
   }
   &_body {
     padding: 1rem;
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: var(--color-accent);
+    // color: var(--color-secondary);
+   
+    // -webkit-background-clip: text;
     max-width: 35ch;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    min-height: 15rem;
   }
   &_title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    background: -webkit-linear-gradient(
+      315deg,
+      var(--color-primary) 25%,
+      var(--color-accent)
+    );
+    min-height: 4rem;
+    background-clip: text;
+    -webkit-background-clip: text;
   }
   &_text {
     margin-bottom: 0.5rem;
+    color: var(--color-secondary);
   }
   &_footer {
     padding: 1rem;
@@ -79,6 +89,7 @@ defineProps({
       display: flex;
       align-items: flex-start;
       gap: 1rem;
+      
     }
   }
 }

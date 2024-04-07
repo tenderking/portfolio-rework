@@ -1,3 +1,6 @@
+<script setup lang="ts">
+definePageMeta({  title: "Projects" })
+</script>
 <template>
 	<main class="ass">
 		<div class="project gradient-border">

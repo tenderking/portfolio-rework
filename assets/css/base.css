@@ -11,9 +11,9 @@
 	--color-accent: hsl(201, 100%, 50%);
 	--color-secondary: hsl(233, 26%, 24%);
 	--color-primary: hsl(25, 61%, 49%);
-	--color-neutral: hsl(233, 8%, 62%);
+	--color-neutral: hsl(233, 8%, 82%);
 	--color-neutral-mute: hsl(240, 7%, 97%);
-	--color-neutral-soft: hsl(232, 8%, 41%);
+	--color-neutral-soft: hsl(232, 8%, 21%);
 	--bg-element: var(--color-neutral-mute);
 	--bg: var(--color-neutral-mute);
 	--text: var(--color-secondary);
@@ -74,7 +74,7 @@ body {
 	color: var(--text);
 }
 #__nuxt {
-	height: 100vh;
+	min-height: 100vh;
 }
 html {
 	/* -webkit-text-size-adjust: 100%; */
@@ -82,11 +82,11 @@ html {
 		Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
 	line-height: 1.5;
 }
-h1,
+/* h1,
 p,
 h2 {
 	margin: 0;
-}
+} */
 h1,
 h2,
 h3,
@@ -106,4 +106,22 @@ a:hover {
 button {
 	border: none;
 	background: 0;
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 0.4s;
+}
+.layout-enter-from,
+.layout-leave-to {
+  filter: grayscale(1);
+}
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
 }

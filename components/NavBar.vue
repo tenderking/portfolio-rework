@@ -5,9 +5,13 @@
     </NuxtLink>
 
     <div class="wrapper">
-      <ul ref="target" :class="isHidden ? 'hidden' : 'show'" v-on-click-outside="closeModal">
+      <ul
+        ref="target"
+        :class="isHidden ? 'hidden' : 'show'"
+        v-on-click-outside="closeModal"
+      >
         <li>
-          <NuxtLink tabindex="0" to="/">Work</NuxtLink>
+          <NuxtLink tabindex="0" to="/">Home</NuxtLink>
         </li>
         <li>
           <NuxtLink tabindex="0" to="/about">About</NuxtLink>
@@ -27,7 +31,7 @@
   </nav>
 </template>
 <script lang="ts" setup>
-import { vOnClickOutside } from '@vueuse/components'
+import { vOnClickOutside } from "@vueuse/components"
 const isHidden = ref(true)
 const isMobile = useMediaQuery("(max-width: 640px)")
 
@@ -38,7 +42,23 @@ function openModal() {
   isHidden.value = false
 }
 
+// scroll to blog page on scroll down
+// const target = ref<HTMLElement | null>(null)
+// const scroll = () => {
+//   if (target.value) {
+//     target.value.scrollIntoView({ behavior: "smooth" })
+//   }
+// }
+// const router = useRouter()
 
+// const checkScroll = () => {
+//   if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+//     router.push("/blog")
+//   }
+// }
+// onMounted(() => {
+//   window.addEventListener("scroll", checkScroll)
+// })
 </script>
 <style lang="scss" scoped>
 nav {
@@ -78,23 +98,21 @@ nav {
 
     .hidden {
       display: none;
+      transition: all 0.5s ease-in-out;
     }
 
     .show {
       display: flex;
+      transition: all 0.5s ease-in-out;
     }
-
-
   }
 }
 
 /**large screens */
 
-@media (min-width:640px) {
-
+@media (min-width: 640px) {
   nav {
     .wrapper {
-
       ul {
         position: static;
         inset: 2em 0 auto 0;
@@ -104,8 +122,6 @@ nav {
         flex-direction: row;
         background: none;
         box-shadow: none;
-
-
       }
 
       .hidden {

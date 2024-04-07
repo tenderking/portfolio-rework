@@ -10,6 +10,8 @@ tags:
 
 # My Experience with ChatGPT
 
+<img src="/img/_655e5d72-a180-4172-9c0e-6ebb60c370ac.jpeg" style="float:right; margin:1rem;"  width="40%"/>
+
 ## A Cool Tool with Limitations
 
 I've been using ChatGPT for a variety of purposes over the past few months, including frontend development, Vue, and even for some random subjects. It's a cool tool, but it's not a silver bullet.
