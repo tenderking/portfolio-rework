@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+const title = ref('George Mushore | Blog')
+
+useSeoMeta({
+  title,
+  description: () => `description: ${title.value}`
+})
 const blogs = await queryContent("blog")
   .only(["_path", "title", "description", "date", "tags"])
   .find();
@@ -39,8 +45,9 @@ h1 {
 .blog-cards_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-  margin: 1rem;
+  grid-gap: 2rem;
+  margin-top: 1rem;
+  margin-inline: auto;
   padding: 1rem;
   justify-items: center;
   max-width: 80rem;
