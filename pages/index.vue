@@ -25,18 +25,12 @@ const projects = await queryContent("projects")
   .find()
 </script>
 <template>
-  <hr />
   <main>
     <header>
-      <img src="@/assets/icons/Mask.svg" width="200" height="200" />
-      <h1>George Mushore</h1>
+      <h1>Hi, I'm George Mushore</h1>
       <h2 class="punchline">Welcome to my personal website.</h2>
       <p class="pitch">
-        Hi, I'm George! I'm a passionate engineer specializing in machine
-        learning and sensor technology. Fueled by a thirst for knowledge, I
-        graduated from the Norwegian Arctic University with a degree in
-        Technology and continuously develop my skills as a self-taught
-        developer.
+        I am a passionate and versatile tech professional with a Master’s degree in Technology, specializing in Data Analytics. My journey in the tech world has been diverse and enriching, spanning various roles and responsibilities.
       </p>
       <p>
         I'm currently seeking exciting opportunities in the tech or IT industry
@@ -44,7 +38,6 @@ const projects = await queryContent("projects")
       </p>
     </header>
 
-<hr />
     <h2 class="title">My projects</h2>
 
     <template v-if="projects">
@@ -90,7 +83,7 @@ main {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1rem;
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -107,7 +100,7 @@ main {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
     margin-top: 0.5rem;
   }

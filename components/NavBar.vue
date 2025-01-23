@@ -62,7 +62,7 @@ function openModal() {
 </script>
 <style lang="scss" scoped>
 nav {
-  padding: 1em;
+  padding:0 1rem ;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,12 +77,12 @@ nav {
       position: absolute;
       inset: 2em 0 auto 0;
       background-color: var(--color-primary);
-      gap: 1em;
+      gap: 1rem;
       flex-direction: column;
 
-      padding: 1em;
-      gap: 1em;
-      border-radius: 1em;
+      padding: 1rem;
+      gap: 1rem;
+      border-radius: 1rem;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       text-align: center;
       z-index: 10;
@@ -118,7 +118,7 @@ nav {
         inset: 2em 0 auto 0;
         padding: 0;
         display: flex;
-        gap: 1em;
+        gap: 1rem;
         flex-direction: row;
         background: none;
         box-shadow: none;

@@ -46,6 +46,7 @@ defineProps({
 
   &:hover {
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    text-decoration: none;
   }
   &_body {
     padding: 1rem;
@@ -68,6 +69,7 @@ defineProps({
     min-height: 4rem;
     background-clip: text;
     -webkit-background-clip: text;
+    color: var(--color-secondary);
   }
   &_text {
     margin-bottom: 0.5rem;

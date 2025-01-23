@@ -8,6 +8,9 @@ imgUrl: "blobo.svg"
 
 This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
+- Solution URL: [Solution](https://github.com/tenderking/job-listing-app)
+- Live Site URL: [Live site URL](https://tenderking.github.io/job-listing-app/)
+
 ### Screenshot
 
 ![Screenshot](https://user-images.githubusercontent.com/10375060/156828701-e821c6fb-a4f1-4b20-a4f4-3b85c37cc140.png)
@@ -19,31 +22,7 @@ This is a solution to the [Job listings with filtering challenge on Frontend Men
     }
 </style>
 
-## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-- [Installing Dependencies](#Installation)
-
-## Overview
-
-### The challenge
-
-Users should be able to:
-
-- View the optimal layout for the site depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Filter job listings based on the categories
-
-### Links
-
-- Solution URL: [Solution](https://github.com/tenderking/job-listing-app)
-- Live Site URL: [Live site URL](https://tenderking.github.io/job-listing-app/)
 
 ## My process
 
