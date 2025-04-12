@@ -1,10 +1,13 @@
 <template>
   <div class="tag-item">
-    <NuxtLink :to="`/blog/tags/${tag}`">
-      {{ tag }}
+    <NuxtLink :to="`/blog/tags/${tag}`" :custom="true" v-slot="{ navigate }">
+      <span @click="navigate" role="link" tabindex="0" class="tag-link">
+        {{ tag }}
+      </span>
     </NuxtLink>
   </div>
 </template>
+
 <script setup lang="ts">
 defineProps({
   tag: {
@@ -13,6 +16,7 @@ defineProps({
   },
 });
 </script>
+
 <style scoped>
 .tag-item {
   background: var(--color-accent);
@@ -24,5 +28,9 @@ defineProps({
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+.tag-link {
+  cursor: pointer;
 }
 </style>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useSeoMeta, useHead } from '#imports' // Assuming Nuxt 3 context
+
 const title = ref('George Mushore')
 
 useSeoMeta({
@@ -6,7 +9,7 @@ useSeoMeta({
   description: () => `description: ${title.value}`
 })
 useHead({
-   meta: [
+  meta: [
     {
       name: 'description',
       content: 'George Mushore personal website'
@@ -16,174 +19,220 @@ useHead({
     {
       rel: 'icon',
       type: 'image/x-icon',
-      href: 'favicon.ico'
+      href: '/favicon.ico' // Ensure favicon path is correct
     }
   ]
 })
-const projects = await queryContent("projects")
-  .only(["_path", "title", "imgUrl"])
-  .find()
 </script>
+
 <template>
-  <main>
-    <header>
-      <h1>Hi, I'm George Mushore</h1>
-      <h2 class="punchline">Welcome to my personal website.</h2>
-      <p class="pitch">
-        I am a passionate and versatile tech professional with a Master’s degree in Technology, specializing in Data Analytics. My journey in the tech world has been diverse and enriching, spanning various roles and responsibilities.
-      </p>
-      <p>
-        I'm currently seeking exciting opportunities in the tech or IT industry
-        where I can leverage my expertise and build innovative solutions.
-      </p>
-    </header>
+  <main class="home">
+    <div class="hero-section">
+      <header>
+        <h1>Hi,<br> I'm George</h1>
+        <h2 class="punchline">Welcome to my personal website.</h2>
+        <p class="pitch">
+          I am a passionate and versatile tech professional with a Master’s degree
+          in Technology, specializing in Data Analytics. My journey in the tech
+          world has been diverse and enriching, spanning various roles and
+          responsibilities.
+        </p>
+      </header>
 
-    <h2 class="title">My projects</h2>
+      <NuxtImg src="/img/bantu.png" alt="George Mushore" densities="x1 x2" width="400px" class="image" />
 
-    <template v-if="projects">
-      <div class="grid-container">
-        <template v-for="route in projects" :key="route._path">
-          <NuxtLink class="card" :to="`${route._path}`">
-            <h2>{{ route.title }}</h2>
 
-            <img :src="route.imgUrl" alt="blob" height="200" width="250" />
-          </NuxtLink>
-        </template>
+
+    </div>
+    <section class="content-section">
+
+      <div class="content">
+
+        <div class="text">
+
+          <p>
+            I'm currently seeking exciting opportunities in the tech or IT
+            industry where I can leverage my expertise and build innovative
+            solutions.
+          </p>
+        </div>
       </div>
-    </template>
+    </section>
   </main>
-  <!-- show blog page on scroll down -->
 </template>
 
 <style lang="scss" scoped>
-hr {
-  border: none;
-  border-top: 1px solid var(--text);
-  overflow: visible;
-  text-align: center;
-  height: 5px;
-}
-main {
-  width: 100vw;
-  text-align: center;
+// Define CSS variables (example, adjust to your actual theme)
+
+
+main.home {
+  width: 100%;
+  max-width: 1200px; // Optional: constrain max width
+  margin: 0 auto; // Center the main container
+  padding: 0 1rem; // Horizontal padding for mobile
+  box-sizing: border-box;
   margin-bottom: 2rem;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr; // Stack image and header by default (mobile)
+  gap: 1rem; // Gap when stacked
+  padding-block: 2rem; // Vertical padding
+  align-items: center; // Center items horizontally when stacked
+  text-align: center; // Center text when stacked
+
+  .image {
+    margin: 0 auto; // Center image when stacked
+    max-width: 250px; // Limit image size on mobile
+    width: 60%; // Responsive width
+
+
+    img {
+      border-radius: 1rem;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
   header {
-    padding-block: 4rem;
+    padding: 0; // Remove padding from header itself, handled by hero-section
+    text-align: center; // Center text on mobile
   }
 
   h1,
   .title {
-    background: -webkit-linear-gradient(
-      315deg,
-      var(--color-primary) 40%,
-      var(--color-accent)
-    );
-    background-clip: border-box;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    // Combined styles for h1 and potential .title class
+
     font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-  .title {
-    margin-bottom: 4rem;
+    font-size: 1.8rem; // Adjusted size for mobile
+    margin: 0 0 0.5rem 0; // Margin below h1
+    line-height: 1.2;
   }
 
   .punchline {
-    background: -webkit-linear-gradient(
-      315deg,
-      var(--color-accent) 15%,
-      var(--text)
-    );
+    background: -webkit-linear-gradient(315deg,
+        var(--color-accent) 15%,
+        var(--text));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1rem;
-    margin-bottom: 2rem;
-    margin-top: 0.5rem;
-  }
-  p {
-    margin-bottom: 2rem;
-    margin-inline: auto;
-    max-width: 75ch;
-    text-align: left;
-    padding: 1rem;
-  }
-
-  p.pitch {
-    max-width: 75ch;
-  }
-
-  .grid-container {
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    gap: 1em;
-
-    .card {
-      padding: 2rem 1rem;
-      width: 100%;
-      display: grid;
-      justify-content: center;
-      border-radius: 0.5rem;
-
-      align-items: center;
-      text-align: center;
-      background: -webkit-linear-gradient(
-        315deg,
-        var(--color-accent) 5%,
-        var(--color-primary)
-      );
-      background-clip: border-box;
-
-      h2 {
-        color: var(--bg);
-      }
-    }
+    font-size: 1.3rem; // Adjusted size for mobile
+    margin: 0; // Reset margin
+    font-weight: normal;
+    line-height: 1.3;
   }
 }
 
-@media (min-width: 640px) {
-  main {
+/* Content Section Styles */
+.content {
+  padding-top: 2rem; // Add space above the paragraphs
+
+  .text {
+    text-align: left; // Keep paragraphs left-aligned
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    max-width: 75ch; // Limit paragraph width for readability
+    margin-left: auto; // Center paragraph block if needed (optional)
+    margin-right: auto; // Center paragraph block if needed (optional)
+    line-height: 1.6;
+  }
+}
+
+
+/* Styles for Medium Screens and Up (e.g., Tablets and Desktops) */
+@media (min-width: 768px) {
+  main.home {
+    padding: 0 2rem; // Increase horizontal padding
+    margin: auto;
+  }
+
+  .hero-section {
+    grid-template-columns: auto 1fr; // **KEY: Image auto-width, text takes rest**
+    gap: 2rem; // Space between image and text
+    padding-block: 3rem;
+    text-align: left; // Align text block left
+
+    .image {
+      max-width: 300px; // Allow slightly larger image
+      width: 100%; // Let grid control size up to max-width
+      margin: 0; // Reset margin
+    }
+
+    header {
+      text-align: left; // Align header text left
+    }
+
     h1,
     .title {
-      font-weight: 700;
-      font-size: 4rem;
-      margin-bottom: 0;
-      margin-top: 0;
-    }
-    .title {
-      margin-bottom: 4rem;
+      font-size: 3.5rem; // Larger font size
     }
 
     .punchline {
-      font-size: 3.5rem;
-      margin-bottom: 2rem;
-      margin-top: 0.5rem;
+      font-size: 2.2rem; // Larger font size
+    }
+  }
+
+  /* Content Section See through glass*/
+  .content-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 165, 0, 0.2));
+    backdrop-filter: blur(10px); // Blur effect for glassmorphism
+    border-radius: 10px; // Rounded corners
+    padding: 1.5rem; // Padding for content section
+  }
+
+
+  .content {
+    padding-top: 3rem; // More space above paragraphs
+    background-color: var(--color-secondary); // Optional background color
+    border-radius: 10px;
+    color: var(--color-neutral-mute); // Optional text color
+  }
+}
+
+/* Optional: Styles for Larger Screens */
+@media (min-width: 1024px) {
+  main.home {
+    padding: 0 3rem;
+  }
+
+  .hero-section {
+    gap: 3rem; // Increase gap further
+    padding-block: 4rem;
+
+    .image {
+      max-width: 350px; // Slightly larger image max-width
+      position: relative;
+      left: -2rem; // Adjust image position
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional shadow for depth
     }
 
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      max-width: 80rem;
-      width: 100%;
-      // justify-content: center;
-
-      margin: auto;
-
-      .card {
-        padding: 2rem 1rem;
-        height: 300px;
-      }
+    h1,
+    .title {
+      font-size: 6rem;
     }
-    p {
-      text-align: center;
-      padding: 0;
+
+    .punchline {
+      font-size: 1.8rem;
     }
+
+    .pitch {
+      max-width: 45ch;
+    }
+  }
+
+  .content-section {
+    margin-top: 4rem;
+  }
+
+
+  .content {
+    padding-block: 4rem;
   }
 }
 </style>

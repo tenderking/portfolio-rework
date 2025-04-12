@@ -1,13 +1,21 @@
 <script lang="ts" setup>
 const title = ref('George Mushore | Blog')
+const isDev = import.meta.dev // Use Nuxt's process.dev instead of import.meta.dev
 
 useSeoMeta({
   title,
   description: () => `description: ${title.value}`
 })
-const blogs = await queryContent("blog")
-  .only(["_path", "title", "description", "date", "tags"])
-  .find();
+
+// Use queryCollection instead of queryContent in v3
+const { data: blogs } = await useAsyncData('blogs', () => 
+  queryCollection('blog')
+    .order('date', 'DESC')
+    .all()
+)
+
+// Debug output
+console.log('Blogs data:', blogs.value)
 </script>
 
 <template>
@@ -17,10 +25,13 @@ const blogs = await queryContent("blog")
   <div class="blog-cards_container">
     <BlogCard
       v-for="article in blogs"
-      :key="article._path"
+      :key="article.path"
       :article="article"
     />
   </div>
+
+  <!-- Debug output (only in development) -->
+  <pre v-if="blogs && isDev">{{ blogs }}</pre>
 </template>
 <style lang="scss" scoped>
 h1 {

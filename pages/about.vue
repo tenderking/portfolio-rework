@@ -1,6 +1,5 @@
 <template>
-  <main>
-    <!-- <IconSocialList /> -->
+  <main class="about">
     <section class="about__header">
       <img id="profile-pic" :src="pic" alt="profile picture" />
 
@@ -15,39 +14,38 @@
     </section>
 
     <section class="about__skills">
-      <div v-for="item in about.resume.education" >
+      <div v-if="about?.resume?.education">
         <h2>Education</h2>
-		<ul>
-		  <li >{{ item.title }}</li>
-		  <li>{{ item.university }}</li>
-		  <li>{{ item.date }}</li>
-		  <li>{{ item.description }}</li>
-		</ul>
-        
+        <ul v-for="item in about.resume.education" :key="item.title">
+          <li v-if="item.title">{{ item.title }}</li>
+          <li v-if="item.university">{{ item.university }}</li>
+          <li v-if="item.date">{{ item.date }}</li>
+          <li v-if="item.description">{{ item.description }}</li>
+        </ul>
       </div>
-      <div>
+      <div v-if="about?.resume?.experience">
         <h2>Experience</h2>
-        <ul v-for="item in about.resume.experience">
+        <ul v-for="item in about.resume.experience" :key="item.title">
           <li>{{ item.title }}</li>
           <li>{{ item.company }}</li>
           <li>{{ item.date }}</li>
           <li>{{ item.description }}</li>
         </ul>
       </div>
-      <div >
+      <div v-if="about?.resume?.certifications">
         <h2>Certifications</h2>
-        <ul v-for="item in about.resume.certifications">
+        <ul v-for="item in about.resume.certifications" :key="item.title">
           <li>{{ item.title }}</li>
           <li>{{ item.from }}</li>
           <li>{{ item.date }}</li>
         </ul>
       </div>
-      <div >
+      <div v-if="about?.resume?.skills">
         <h2>Skills</h2>
-        <ul >
-		  <li v-for="item in about.resume.skills">
-          {{ item }}
-		  </li>
+        <ul>
+          <li v-for="item in about.resume.skills" :key="item">
+            {{ item }}
+          </li>
         </ul>
       </div>
     </section>
@@ -55,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-
+import { useAsyncData } from '#imports';
 import pic from "@/assets/old/outdoor-pic.jpg"
 const title = ref('George Mushore | About')
 
@@ -64,9 +62,13 @@ useSeoMeta({
   description: () => `description: ${title.value}`
 })
 definePageMeta({ layout: "nav-and-footer", title: "About" })
-const about = await queryContent("/about").findOne()
-console.log("about:", about)
+
+// Use queryCollection instead of queryContent in v3
+const { data: about } = await useAsyncData('about', () => 
+  queryCollection('about').first()
+)
 </script>
+
 <style lang="scss" scoped>
 .about__header {
   border-bottom: 1px solid var(--color-neutral);

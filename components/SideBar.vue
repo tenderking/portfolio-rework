@@ -1,13 +1,17 @@
 <script lang="ts" setup>
-const blogs = await queryContent("blog")
-  .only(["_path", "title", "description", "date"])
-  .find();
+const { data: blogs } = await useAsyncData('sidebar-blogs', () =>
+  queryCollection('blog')
+    .select('title', 'path')
+    .all()
+);
+
 const route = useRoute();
-const blogPath = await blogs.map((blog) => blog._path.replace("/blog/", ""));
-console.log(blogPath);
-console.log(route.params.slug);
-const isActiveBlog = blogPath.includes(route.params.slug);
-console.log(isActiveBlog);
+const blogPath = computed(() => 
+  blogs.value?.map(blog => blog.path?.replace("/blog/", "")) || []
+);
+const isActiveBlog = computed(() => 
+  blogPath.value.includes(Array.isArray(route.params.slug) ? route.params.slug[0] : route.params.slug)
+);
 </script>
 
 <template>
@@ -15,9 +19,9 @@ console.log(isActiveBlog);
     <h2>My Blogs</h2>
 
     <ul>
-      <li v-for="article in blogs" :key="article._path" class="blog-article">
+      <li v-for="article in blogs" :key="article.path" class="blog-article">
         <NuxtLink
-          :to="`${article._path}`"
+          :to="article.path"
           :active-class="isActiveBlog ? 'active' : ''"
         >
           {{ article.title }}

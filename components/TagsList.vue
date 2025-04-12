@@ -7,20 +7,20 @@
   </div>
 </template>
 <script setup lang="ts">
-// get list of all tags using queryContent
+// get list of all tags using queryCollection
 
-const { data } = await useAsyncData("tags", () => {
-  return queryContent("blog")
-    .where({ tags: { $exists: true } })
-    .only(["tags"])
-    .find()
-    .then((data) => {
-      return data.map((item) => item.tags).flat();
+const { data } = await useAsyncData('tags', () =>
+  queryCollection('blog')
+    .select(['tags'])
+    .where('tags', 'IS NOT NULL')
+    .all()
+    .then(posts => {
+      const tags = posts
+        .map(post => post.tags)
+        .flat();
+      return [...new Set(tags)];
     })
-    .then((data) => {
-      return [...new Set(data)];
-    });
-});
+);
 </script>
 <style scoped>
 .tags-list {

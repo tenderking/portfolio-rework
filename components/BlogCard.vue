@@ -1,27 +1,28 @@
 <template>
   <div>
-    <NuxtLink class="blog-card" :to="`${article._path}`">
-      <div class="blog-card_body">
-        <h2 class="blog-card_title">{{ article.title }}</h2>
-        <p class="blog-card_text">{{ article.description }}</p>
-      </div>
-
-      <div class="blog-card_footer">
-        <div class="tags">
-          <TagItem
-            v-for="(tag, index) in article.tags"
-            :key="index"
-            :tag="tag"
-            class="badge bg-secondary me-1"
-          >
-            {{ tag }}
-          </TagItem>
+    <NuxtLink class="blog-card" :to="article.path" :custom="true" v-slot="{ navigate }">
+      <div class="blog-card" @click="navigate" role="link" tabindex="0">
+        <div class="blog-card_body">
+          <h2 class="blog-card_title">{{ article.title }}</h2>
+          <p class="blog-card_text">{{ article.description }}</p>
         </div>
-        <small class="text-muted">{{ article.date }}</small>
+
+        <div class="blog-card_footer">
+          <div class="tags">
+            <TagItem
+              v-for="(tag, index) in article.tags"
+              :key="index"
+              :tag="tag"
+              class="badge bg-secondary me-1"
+            />
+          </div>
+          <small class="text-muted">{{ article.date }}</small>
+        </div>
       </div>
     </NuxtLink>
   </div>
 </template>
+
 <script lang="ts" setup>
 import type { ParsedContent } from "@nuxt/content/dist/runtime/types";
 
@@ -32,6 +33,7 @@ defineProps({
   },
 });
 </script>
+
 <style lang="scss" scoped>
 .blog-card {
   margin-bottom: 1rem;
@@ -42,6 +44,7 @@ defineProps({
   overflow: hidden;
   display: grid;
   grid-template-rows: 3fr 1fr;
+  cursor: pointer;
   //  make the card the same height
 
   &:hover {

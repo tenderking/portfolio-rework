@@ -11,18 +11,37 @@ export default defineNuxtConfig({
   //   // },
   // },
 
-  modules: ["@vueuse/nuxt", "@nuxt/content", "nuxt-icons"],
+  modules: [
+    "@vueuse/nuxt",
+    "@nuxt/content",
+    "@nuxt/icon",
+    "@nuxt/image",
+  ],
 
   css: ["@/assets/css/base.css", "@/assets/css/utils.css"],
 
-  content: {
-    highlight: {
-      theme: {
-        // Default theme (same as single string)
-        default: "github-dark",
-      },
+  compatibilityDate: "2025-01-23",
+
+  // Add Vite configuration to handle source maps for WASM files
+  vite: {
+    build: {
+      sourcemap: false, // Disable source maps in production builds
     },
+    optimizeDeps: {
+      exclude: ['@sqlite.org/sqlite-wasm'], // Exclude SQLite WASM from optimization
+    },
+    // Adjust how Nuxt handles source maps for WebAssembly files
+    worker: {
+      format: 'es', // Use ES modules format
+      plugins: []
+    }
   },
 
-  compatibilityDate: "2025-01-23",
+  // Configure Content module
+  content: {
+    // Disable source maps for the content module
+    experimental: {
+      stripQueryParameters: true
+    }
+  }
 })
