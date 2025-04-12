@@ -14,10 +14,6 @@
           <NuxtLink tabindex="0" to="/">Home</NuxtLink>
         </li>
         <li>
-          <NuxtLink tabindex="0" to="/about">About</NuxtLink>
-        </li>
-
-        <li>
           <NuxtLink tabindex="0" to="/blog">Blog</NuxtLink>
         </li>
       </ul>

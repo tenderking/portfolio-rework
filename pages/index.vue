@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useSeoMeta, useHead } from '#imports' // Assuming Nuxt 3 context
+import { useSeoMeta, useHead, useAsyncData } from '#imports' // Assuming Nuxt 3 context
+import pic from "@/assets/old/outdoor-pic.jpg"
 
 const title = ref('George Mushore')
 
@@ -23,6 +24,19 @@ useHead({
     }
   ]
 })
+
+// Get about data
+const { data: about } = await useAsyncData('about', () => 
+  queryCollection('about').first()
+)
+
+// Get latest blog post
+const { data: latestBlog } = await useAsyncData('latestBlog', () => 
+  queryCollection('blog')
+    .order('date', 'DESC')
+    .limit(1)
+    .all()
+)
 </script>
 
 <template>
@@ -32,7 +46,7 @@ useHead({
         <h1>Hi,<br> I'm George</h1>
         <h2 class="punchline">Welcome to my personal website.</h2>
         <p class="pitch">
-          I am a passionate and versatile tech professional with a Master’s degree
+          I am a passionate and versatile tech professional with a Master's degree
           in Technology, specializing in Data Analytics. My journey in the tech
           world has been diverse and enriching, spanning various roles and
           responsibilities.
@@ -40,21 +54,62 @@ useHead({
       </header>
 
       <NuxtImg src="/img/bantu.png" alt="George Mushore" densities="x1 x2" width="400px" class="image" />
-
-
-
     </div>
+    
     <section class="content-section">
-
-      <div class="content">
-
         <div class="text">
+          <!-- Latest blog post highlight with the new FeaturedBlog component -->
+          <div class="latest-blog-highlight" v-if="latestBlog && latestBlog.length > 0">
+            <h3>Latest from my blog</h3>
+            <FeaturedBlog :article="latestBlog[0]" />
+            <NuxtLink to="/blog" class="view-all-link">View all posts →</NuxtLink>
+          </div>
+        </div>
+    </section>
 
+    <!-- About section merged from about.vue -->
+    <section class="about-section">
+      <h2 class="section-title">About Me</h2>
+      
+      <div class="about-header">
+        <img id="profile-pic" :src="pic" alt="profile picture" />
+
+        <div class="about-header-text">
+          <h2 class="display">{{ about?.title }}</h2>
+          <h3>{{ about?.catchphrase }}</h3>
           <p>
-            I'm currently seeking exciting opportunities in the tech or IT
-            industry where I can leverage my expertise and build innovative
-            solutions.
+            {{ about?.description }}
           </p>
+          <NuxtLink to="mailto:contact@example.com" external>Coffee </NuxtLink>
+        </div>
+      </div>
+
+      <div class="about-skills">
+        <div v-if="about?.resume?.education" class="skills-section">
+          <h2>Education</h2>
+          <ul v-for="item in about.resume.education" :key="item.title">
+            <li v-if="item.title">{{ item.title }}</li>
+            <li v-if="item.university">{{ item.university }}</li>
+            <li v-if="item.date">{{ item.date }}</li>
+            <li v-if="item.degree">{{ item.degree }}</li>
+          </ul>
+        </div>
+        <div v-if="about?.resume?.experience" class="skills-section">
+          <h2>Experience</h2>
+          <ul v-for="item in about.resume.experience" :key="item.title">
+            <li>{{ item.title }}</li>
+            <li>{{ item.company }}</li>
+            <li>{{ item.date }}</li>
+            <li>{{ item.description }}</li>
+          </ul>
+        </div>
+        <div v-if="about?.resume?.skills" class="skills-section">
+          <h2>Skills</h2>
+          <ul>
+            <li v-for="item in about.resume.skills" :key="item">
+              {{ item }}
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -63,7 +118,6 @@ useHead({
 
 <style lang="scss" scoped>
 // Define CSS variables (example, adjust to your actual theme)
-
 
 main.home {
   width: 100%;
@@ -88,7 +142,6 @@ main.home {
     max-width: 250px; // Limit image size on mobile
     width: 60%; // Responsive width
 
-
     img {
       border-radius: 1rem;
       max-width: 100%;
@@ -106,7 +159,6 @@ main.home {
   h1,
   .title {
     // Combined styles for h1 and potential .title class
-
     font-weight: 700;
     font-size: 1.8rem; // Adjusted size for mobile
     margin: 0 0 0.5rem 0; // Margin below h1
@@ -144,6 +196,111 @@ main.home {
   }
 }
 
+/* Latest Blog Highlight */
+.latest-blog-highlight {
+  margin-top: 1rem;
+  padding: 1rem;
+  
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    background: -webkit-linear-gradient(315deg,
+        var(--color-primary) 25%,
+        var(--color-accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+  
+  .view-all-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* About Section Styles */
+.about-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: -webkit-linear-gradient(315deg,
+        var(--color-primary) 25%,
+        var(--color-accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+  }
+}
+
+.about-header {
+  border-bottom: 1px solid var(--color-neutral);
+  padding-bottom: 2rem;
+
+  img {
+    margin: auto;
+    padding: 1em;
+    width: 100%;
+    border-radius: 2em;
+  }
+
+  &-text {
+    padding: 1em;
+
+    h2 {
+      font-size: 2rem;
+      background: -webkit-linear-gradient(
+        315deg,
+        var(--color-primary) 25%,
+        var(--color-accent)
+      );
+      background-clip: border-box;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.about-skills {
+  margin-top: 2rem;
+  
+  .skills-section {
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    
+    ul {
+      margin: 0;
+      margin-bottom: 1rem;
+      padding: 0;
+      
+      li {
+        color: var(--text-soft);
+        margin-bottom: 0.5rem;
+        list-style-type: none;
+      }
+    }
+  }
+}
 
 /* Styles for Medium Screens and Up (e.g., Tablets and Desktops) */
 @media (min-width: 768px) {
@@ -186,12 +343,46 @@ main.home {
     padding: 1.5rem; // Padding for content section
   }
 
-
   .content {
     padding-top: 3rem; // More space above paragraphs
     background-color: var(--color-secondary); // Optional background color
     border-radius: 10px;
     color: var(--color-neutral-mute); // Optional text color
+  }
+  
+  .about-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+
+    img {
+      max-width: 400px;
+      margin: 0;
+    }
+
+    &-text {
+      padding: 1em;
+      h2,
+      h3 {
+        max-width: 40ch;
+      }
+
+      p {
+        max-width: 50ch;
+      }
+    }
+  }
+
+  .about-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    .skills-section {
+      flex: 0 0 48%; // Two columns with small gap
+      margin-bottom: 2rem;
+    }
   }
 }
 
@@ -209,7 +400,8 @@ main.home {
       max-width: 350px; // Slightly larger image max-width
       position: relative;
       left: -2rem; // Adjust image position
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional shadow for depth
+        -webkit-filter: drop-shadow(5px 5px 5px #222);
+          filter: drop-shadow(5px 5px 5px #222);
     }
 
     h1,
@@ -228,11 +420,17 @@ main.home {
 
   .content-section {
     margin-top: 4rem;
+    padding-inline: 6rem; // More padding for larger screens
   }
 
-
   .content {
-    padding-block: 4rem;
+    padding-block: 4rem;  
+  }
+  
+  .about-skills {
+    .skills-section {
+      flex: 0 0 23%; // Four columns with small gaps
+    }
   }
 }
 </style>

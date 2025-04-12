@@ -2,11 +2,14 @@
   <div class="flex-col container">
     <SideBar class="side-bar" />
     <div class="article">
-
+      <!-- Just show the date in the header -->
+      <header v-if="post" class="blog-header">
+        <span class="blog-date">{{ formatDate(post.date) }}</span>
+      </header>
      
-        <ContentRenderer v-if="post" :value="post" class="post-content" />
-        <div v-else class="error-message">
-          <p>Blog post not found.</p>
+      <ContentRenderer v-if="post" :value="post" class="post-content" />
+      <div v-else class="error-message">
+        <p>Blog post not found.</p>
       </div>
     </div>
   </div>
@@ -72,9 +75,32 @@ const formatDate = (dateString: string): string => {
   margin: auto;
   padding: 1em;
   grid-column: 2/3;
+  width: 100%;
+  box-sizing: border-box;
 }
 .article-img{
   width: 100%;
+}
+
+/* Add responsive image styles for blog content */
+:deep(.post-content) {
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  /* Fix for floating images in mobile view */
+  @media (max-width: 639px) {
+    img[style*="float:right"],
+    img[style*="float: right"] {
+      float: none !important;
+      display: block;
+      margin: 1rem auto !important;
+      width: 100% !important;
+      max-width: 300px;
+    }
+  }
 }
 
 @media (min-width: 640px) {
@@ -112,6 +138,8 @@ h1 {
 .post-content {
   line-height: 1.6;
   margin-top: 2rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .content-debug {
@@ -120,5 +148,27 @@ h1 {
   background-color: #f5f5f5;
   border-radius: 0.5rem;
   color: #333;
+}
+
+/* Update styles for the blog header */
+.blog-header {
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--text-soft);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blog-date {
+  color: var(--text-soft);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .blog-header {
+    justify-content: flex-end;
+  }
 }
 </style>
