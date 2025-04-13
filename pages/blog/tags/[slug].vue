@@ -1,36 +1,29 @@
 <script setup lang="ts">
 // Get the current tag from route params
 const route = useRoute();
-const tag = route.params.slug as string;
 
 // Get all blogs with the specified tag using IN operator for array values
-const { data: blogs } = await useAsyncData(`blogs-${tag}`, () =>
+const { data: blogs } = await useAsyncData( () =>
   queryCollection('blog')
-    .where('tags', 'LIKE', tag) // Use CONTAINS operator for arrays
-    .order('date', 'DESC') // Sort by date descending
+  // Use array-contains for single tag
+    .where('tags', 'LIKE', `%${route.params.slug}%`)
     .all()
+
 );
 
-console.log(`Found ${blogs.value?.length || 0} posts with tag: ${tag}`);
 </script>
 
 <template>
   <h1># {{ route.params.slug }}</h1>
 
   <div v-if="blogs && blogs.length > 0" class="blog-cards_container">
-    <BlogCard
-      v-for="article in blogs"
-      :key="article.path"
-      :article="article"
-    />
+    <BlogCard v-for="article in blogs" :key="article.path" :article="article" />
   </div>
   <div v-else class="no-posts">
     <p>No posts found with this tag.</p>
   </div>
 
-  <!-- Debug output 
-  <pre v-if="blogs">{{ blogs }}</pre>
-  -->
+
 </template>
 <style lang="scss" scoped>
 h1 {

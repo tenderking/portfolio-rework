@@ -11,15 +11,16 @@
 
 const { data } = await useAsyncData('tags', () =>
   queryCollection('blog')
-    .select(['tags'])
+    .select('tags')
     .where('tags', 'IS NOT NULL')
     .all()
     .then(posts => {
-      const tags = posts
-        .map(post => post.tags)
-        .flat();
-      return [...new Set(tags)];
-    })
+          const tags = posts
+            .map(post => post.tags)
+            .flat()
+            .filter((tag): tag is string => typeof tag === "string");
+          return [...new Set(tags)];
+        })
 );
 </script>
 <style scoped>

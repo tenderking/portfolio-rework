@@ -199,7 +199,6 @@ main.home {
 /* Latest Blog Highlight */
 .latest-blog-highlight {
   margin-top: 1rem;
-  padding: 1rem;
   
   h3 {
     font-size: 1.5rem;
@@ -234,13 +233,7 @@ main.home {
   .section-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    text-align: center;
-    background: -webkit-linear-gradient(315deg,
-        var(--color-primary) 25%,
-        var(--color-accent));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
     font-weight: 900;
   }
 }
@@ -261,11 +254,9 @@ main.home {
 
     h2 {
       font-size: 2rem;
-      background: -webkit-linear-gradient(
-        315deg,
-        var(--color-primary) 25%,
-        var(--color-accent)
-      );
+  background: -webkit-linear-gradient(315deg,
+        var(--color-accent) 15%,
+        var(--text));
       background-clip: border-box;
       background-clip: text;
       -webkit-background-clip: text;
@@ -337,9 +328,9 @@ main.home {
 
   /* Content Section See through glass*/
   .content-section {
-    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 165, 0, 0.2));
+    background: linear-gradient(var(--glass), rgba(255, 165, 0, 0.1));
     backdrop-filter: blur(10px); // Blur effect for glassmorphism
-    border-radius: 10px; // Rounded corners
+    border-radius: 20px; // Rounded corners
     padding: 1.5rem; // Padding for content section
   }
 
@@ -420,7 +411,7 @@ main.home {
 
   .content-section {
     margin-top: 4rem;
-    padding-inline: 6rem; // More padding for larger screens
+    padding-inline: 4rem; // More padding for larger screens
   }
 
   .content {

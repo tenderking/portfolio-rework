@@ -1,11 +1,12 @@
 <template>
+  <NuxtLink :to="`/blog/tags/${tag}`" :custom="true" v-slot="{ navigate }">
   <div class="tag-item">
-    <NuxtLink :to="`/blog/tags/${tag}`" :custom="true" v-slot="{ navigate }">
+      <Icon :name="getIconForTag(tag)" class="tag-icon" />
       <span @click="navigate" role="link" tabindex="0" class="tag-link">
         {{ tag }}
       </span>
-    </NuxtLink>
-  </div>
+    </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -15,6 +16,22 @@ defineProps({
     required: true,
   },
 });
+function getIconForTag(tag: string): string {
+  const tagIcons: Record<string, string> = {
+    'coding': 'mdi:code-tags',
+    'tech': 'mdi:laptop',
+    'design': 'uil:brush-alt',
+    'ux': 'material-symbols:design-services',
+    'data': 'mdi:database',
+    'ai': 'mdi:robot',
+    'web': 'mdi:web',
+    'frontend': 'logos:vue',
+    'backend': 'logos:nodejs',
+    'default': 'mdi:card-text-outline'
+  };
+
+  return tagIcons[tag.toLowerCase()] || tagIcons.default;
+}
 </script>
 
 <style scoped>
@@ -24,13 +41,22 @@ defineProps({
   width: fit-content;
   padding: 0.5em;
   border-radius: 0.5em;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 0.5em;
+
 }
 
 .tag-link {
   cursor: pointer;
+  
+}
+.tag-item:hover{
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+  background-color: var(--bg-primary);
+  outline: solid 0.1em var(--color-primary);
 }
 </style>

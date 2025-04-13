@@ -30,8 +30,7 @@ console.log('Blogs data:', blogs.value)
     />
   </div>
 
-  <!-- Debug output (only in development) -->
-  <pre v-if="blogs && isDev">{{ blogs }}</pre>
+
 </template>
 <style lang="scss" scoped>
 h1 {
@@ -56,11 +55,45 @@ h1 {
 .blog-cards_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 1fr;
   grid-gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-inline: auto;
-  padding: 1rem;
-  justify-items: center;
+  padding: 1.5rem;
   max-width: 80rem;
+}
+
+/* Add a subtle background pattern to the blog page for the glassmorphism effect to work against */
+:deep(body) {
+  position: relative;
+}
+
+:deep(body)::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(var(--color-primary-rgb), 0.03) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(var(--color-primary-rgb), 0.03) 75%,
+      rgba(var(--color-primary-rgb), 0.03)
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(var(--color-accent-rgb), 0.03) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(var(--color-accent-rgb), 0.03) 75%,
+      rgba(var(--color-accent-rgb), 0.03)
+    );
+  background-size: 60px 60px;
+  z-index: -1;
+  opacity: 0.4;
 }
 </style>
